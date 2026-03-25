@@ -408,5 +408,119 @@ namespace LigaBetPlaySimulador.Services
                 SimularPartidoAutomatico(partido.Item1, partido.Item2);
             }
         }
+        public void GenerarReporteFinal()
+        {
+            Console.WriteLine("\n===== REPORTE FINAL DEL TORNEO =====\n");
+
+            var campeon = torneo.Equipos
+                .OrderByDescending(e => e.Puntos)
+                .ThenByDescending(e => e.DiferenciaGoles)
+                .FirstOrDefault();
+
+            var goleador = torneo.Equipos
+                .OrderByDescending(e => e.GF)
+                .FirstOrDefault();
+
+            var mejorDefensa = torneo.Equipos
+                .OrderBy(e => e.GC)
+                .FirstOrDefault();
+
+            var totalGoles = torneo.Equipos.Sum(e => e.GF);
+            var promedioGoles = torneo.Equipos.Average(e => e.GF);
+
+            Console.WriteLine($"🏆 Campeón: {campeon?.Nombre} ({campeon?.Puntos} pts)");
+            Console.WriteLine($"⚽ Mejor ataque: {goleador?.Nombre} ({goleador?.GF} goles)");
+            Console.WriteLine($"🧤 Mejor defensa: {mejorDefensa?.Nombre} ({mejorDefensa?.GC} goles)");
+            Console.WriteLine($"📊 Total goles del torneo: {totalGoles}");
+            Console.WriteLine($"📈 Promedio de goles: {promedioGoles:F2}");
+
+            Console.WriteLine("\n===== TOP 5 =====");
+
+            var top5 = torneo.Equipos
+                .OrderByDescending(e => e.Puntos)
+                .Take(5);
+
+            foreach (var e in top5)
+            {
+                Console.WriteLine($"{e.Nombre} - {e.Puntos} pts");
+            }
+        }
+        public class liga 
+        {
+        public void MostrarTabla()
+        {
+
+
+            var tabla = torneo.Equipos
+                .OrderByDescending(e => e.Puntos)
+                .ThenByDescending(e => e.DiferenciaGoles)
+                .ThenByDescending(e => e.GF);
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\n===== TABLA DE POSICIONES =====\n");
+            Console.ResetColor();
+
+            Console.WriteLine("Equipo        PJ  PG  PE  PP  GF  GC  DG  PTS");
+
+            foreach (var e in tabla)
+            {
+                Console.WriteLine($"{e.Nombre,-12} {e.PJ,2} {e.PG,2} {e.PE,2} {e.PP,2} {e.GF,3} {e.GC,3} {e.DiferenciaGoles,3} {e.Puntos,3}");
+            }
+        }
+    }
+    public void GenerarReporteFinal()
+    {
+        Console.WriteLine("\n===== REPORTE FINAL DEL TORNEO =====\n");
+
+        var campeon = torneo.Equipos
+            .OrderByDescending(e => e.Puntos)
+            .ThenByDescending(e => e.DiferenciaGoles)
+            .FirstOrDefault();
+
+        var goleador = torneo.Equipos
+            .OrderByDescending(e => e.GF)
+            .FirstOrDefault();
+
+        var mejorDefensa = torneo.Equipos
+            .OrderBy(e => e.GC)
+            .FirstOrDefault();
+
+        var totalGoles = torneo.Equipos.Sum(e => e.GF);
+        var promedioGoles = torneo.Equipos.Average(e => e.GF);
+
+        Console.WriteLine($"🏆 Campeón: {campeon?.Nombre} ({campeon?.Puntos} pts)");
+        Console.WriteLine($"⚽ Mejor ataque: {goleador?.Nombre} ({goleador?.GF} goles)");
+        Console.WriteLine($"🧤 Mejor defensa: {mejorDefensa?.Nombre} ({mejorDefensa?.GC} goles)");
+        Console.WriteLine($"📊 Total goles del torneo: {totalGoles}");
+        Console.WriteLine($"📈 Promedio de goles: {promedioGoles:F2}");
+
+        Console.WriteLine("\n===== TOP 5 =====");
+
+        var top5 = torneo.Equipos
+            .OrderByDescending(e => e.Puntos)
+            .Take(5);
+
+        foreach (var e in top5)
+        {
+            Console.WriteLine($"{e.Nombre} - {e.Puntos} pts");
+        }
+        public void MostrarTabla()
+{
+            var tabla = torneo.Equipos
+                .OrderByDescending(e => e.Puntos)
+                .ThenByDescending(e => e.DiferenciaGoles)
+                .ThenByDescending(e => e.GF);
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\n===== TABLA DE POSICIONES =====\n");
+            Console.ResetColor();
+
+            Console.WriteLine("Equipo        PJ  PG  PE  PP  GF  GC  DG  PTS");
+
+            foreach (var e in tabla)
+            {
+                Console.WriteLine($"{e.Nombre,-12} {e.PJ,2} {e.PG,2} {e.PE,2} {e.PP,2} {e.GF,3} {e.GC,3} {e.DiferenciaGoles,3} {e.Puntos,3}");
+            }
+        }
     }
 }
