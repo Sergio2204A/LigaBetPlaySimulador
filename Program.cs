@@ -25,7 +25,8 @@ namespace LigaBetPlaySimulador
                 Console.WriteLine("10. Generar fixture");
                 Console.WriteLine("11. Ver fixture");
                 Console.WriteLine("12. Simular jornada por número");
-                Console.WriteLine("13. Salir");
+                Console.WriteLine("13. Reporte final");
+                Console.WriteLine("14. Salir");
 
                 Console.Write("Seleccione opción: ");
                 opcion = int.Parse(Console.ReadLine() ?? "0");
