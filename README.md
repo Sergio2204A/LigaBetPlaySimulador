@@ -215,6 +215,6 @@ Además, se construyó una base sólida que puede ser extendida hacia aplicacion
 
 ## 👨‍💻 Autor
 
-[Tu nombre aquí]
+Sergio Andrés Abril Mendoza · [GitHub](https://github.com/Sergio2204A)
 
 Proyecto académico – 2026
