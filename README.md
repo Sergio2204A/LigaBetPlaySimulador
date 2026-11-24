@@ -6,7 +6,7 @@
 **Lenguaje:** C#
 **Tipo de aplicación:** Consola (.NET)
 **Paradigma:** Programación Orientada a Objetos (POO)
-**Autor:** [Tu nombre]
+**Autor:** Sergio Andrés Abril Mendoza ([@Sergio2204A](https://github.com/Sergio2204A))
 **Fecha:** 2026
 
 ---
